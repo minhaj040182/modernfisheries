@@ -71,8 +71,9 @@ export default function LanguageTranslator({ className = "" }: LanguageTranslato
     return () => document.removeEventListener("change", handleComboChange);
   }, []);
 
-  // Initialize Google Translate script safely
-  useEffect(() => {
+  // Load translation only after an explicit user action so it never blocks
+  // the initial English page render or crawler access.
+  const enableGoogleTranslate = () => {
     window.googleTranslateElementInit = () => {
       if (window.google && window.google.translate) {
         try {
@@ -99,10 +100,11 @@ export default function LanguageTranslator({ className = "" }: LanguageTranslato
       script.async = true;
       script.onerror = () => {
         // Silently handle offline/blocked errors
+        script.remove();
       };
       document.body.appendChild(script);
     }
-  }, []);
+  };
 
   // Close translator and reset back to original language (English)
   const resetTranslation = () => {
@@ -119,7 +121,17 @@ export default function LanguageTranslator({ className = "" }: LanguageTranslato
   return (
     <div className={`inline-flex items-center gap-2 bg-slate-900/70 hover:bg-slate-900/90 border border-slate-700/70 backdrop-blur-md px-2.5 py-1.5 rounded-xl shadow-sm transition-all ${className}`}>
       {/* Language Selector Pill */}
-      <div className="relative flex items-center gap-1.5 cursor-pointer">
+      <div
+        className="relative flex items-center gap-1.5 cursor-pointer"
+        onClick={enableGoogleTranslate}
+        onKeyDown={(event) => {
+          if (event.key === "Enter" || event.key === " ") enableGoogleTranslate();
+        }}
+        role="button"
+        tabIndex={0}
+        title="Enable optional translation"
+        aria-label="Enable optional translation"
+      >
         {/* Flag + Code + Dropdown Arrow */}
         <div className="flex items-center gap-1 text-slate-100 font-bold text-xs shrink-0 select-none pointer-events-none">
           <span className="text-sm leading-none">{currentLang.flag}</span>
