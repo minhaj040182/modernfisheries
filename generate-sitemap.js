@@ -31,79 +31,79 @@ const PRIMARY_PAGES = [
     title: 'Modern Fisheries Home & Aquaculture Hub'
   },
   {
-    path: '/aquaponics/',
+    path: '/aquaponics-farming',
     changefreq: 'weekly',
     priority: '0.9',
     title: 'Commercial Aquaponics Farming Systems'
   },
   {
-    path: '/biofloc/',
+    path: '/bioflock',
     changefreq: 'weekly',
     priority: '0.9',
     title: 'Biofloc Technology (BFT) Fish Farming'
   },
   {
-    path: '/ras/',
+    path: '/aquaponic',
     changefreq: 'weekly',
     priority: '0.9',
     title: 'Recirculating Aquaculture System (RAS)'
   },
   {
-    path: '/hydroponics/',
+    path: '/hydroponic',
     changefreq: 'weekly',
     priority: '0.9',
     title: 'Hydroponic System Management & Nutrients'
   },
   {
-    path: '/pond-farming/',
+    path: '/pond-farming',
     changefreq: 'weekly',
     priority: '0.9',
     title: 'Earthen Pond Fish Farming & Ecosystem'
   },
   {
-    path: '/fish-diseases/',
+    path: '/fish-diseases',
     changefreq: 'weekly',
     priority: '0.9',
     title: 'Fish Disease Diagnosis & Treatments'
   },
   {
-    path: '/feeding-management/',
+    path: '/feeding-management',
     changefreq: 'weekly',
     priority: '0.9',
     title: 'Fish Feed Management & FCR Sizing'
   },
   {
-    path: '/calculators/',
+    path: '/calculators',
     changefreq: 'weekly',
     priority: '0.95',
     title: 'Precision Aquaculture Calculators & FCR Sizing'
   },
   {
-    path: '/ourservices/',
+    path: '/ourservices',
     changefreq: 'monthly',
     priority: '0.85',
     title: 'Commercial Consultancy, Turnkey RAS & Feed Supply'
   },
   {
-    path: '/about-us/',
+    path: '/about-us',
     changefreq: 'monthly',
     priority: '0.7',
     title: 'About Modern Fisheries'
   },
   {
-    path: '/privacy-policy/',
+    path: '/privacy-policy',
     changefreq: 'monthly',
     priority: '0.5',
     title: 'Privacy Policy & Terms of Service'
   },
   {
-    path: '/farming-videos/',
+    path: '/farming-videos',
     changefreq: 'weekly',
     priority: '0.9',
     title: 'Aquaculture Video Tutorials & Farm Guides'
   },
   {
-    path: '/frequently-asked-questions/',
+    path: '/frequently-asked-questions',
     changefreq: 'weekly',
     priority: '0.8',
     title: 'Aquaculture FAQ & Knowledge Base'
@@ -117,16 +117,9 @@ const EXCLUDED_PATTERNS = [
   /\/404/i,
   /\/410/i,
   /\/home$/i,
-  /\/aquaponic$/i,
-  /\/ras-farming$/i,
-  /\/recirculating$/i,
-  /\/bioflock$/i,
-  /\/biofloc-farming$/i,
-  /\/aquaponics-farming$/i,
-  /\/aquaponic-farming$/i,
-  /\/hydroponic$/i,
-  /\/hydroponics-farming$/i,
-  /\/soilless$/i,
+  /\/ras$/i,
+  /\/biofloc$/i,
+  /\/hydroponics$/i,
   /\/pond$/i,
   /\/diseases$/i,
   /\/feed$/i,

@@ -59,19 +59,19 @@ export function createSlug(text: string): string {
 
 export const PAGE_SEO_PATHS: Record<PageType, string> = {
   home: "/",
-  ras: "/ras/",
-  biofloc: "/biofloc/",
-  aquaponics: "/aquaponics/",
-  hydroponics: "/hydroponics/",
-  pond: "/pond-farming/",
-  diseases: "/fish-diseases/",
-  feed: "/feeding-management/",
-  calculators: "/calculators/",
-  services: "/ourservices/",
-  about: "/about-us/",
-  privacy: "/privacy-policy/",
-  videos: "/farming-videos/",
-  faq: "/frequently-asked-questions/",
+  ras: "/aquaponic",
+  biofloc: "/bioflock",
+  aquaponics: "/aquaponics-farming",
+  hydroponics: "/hydroponic",
+  pond: "/pond-farming",
+  diseases: "/fish-diseases",
+  feed: "/feeding-management",
+  calculators: "/calculators",
+  services: "/ourservices",
+  about: "/about-us",
+  privacy: "/privacy-policy",
+  videos: "/farming-videos",
+  faq: "/frequently-asked-questions",
   "404": "/404",
   "410": "/410",
 };
@@ -120,16 +120,25 @@ export function parseUrlPath(pathnameOrHash: string, allVideos: Video[]): { page
     return { page: "404", video: null };
   }
 
-  // Video route matching: /video/:slug-id or /video/:id
+  // Video route matching: /video/:slug-id or /video/:id or /video
+  if (normalized === "/video" || normalized === "/video/") {
+    return { page: "videos", video: null };
+  }
+
   if (normalized.startsWith("/video/")) {
-    const segments = normalized.replace(/^\/video\//, "").split("-");
-    const potentialId = segments[segments.length - 1];
+    const rawParam = normalized.replace(/^\/video\//, "").replace(/\/+$/, "");
+    if (!rawParam) {
+      return { page: "videos", video: null };
+    }
     
-    // Search by ID or matching title slug
+    // Search by exact ID (e.g. own-1), ID suffix (e.g. ...-own-1), or matching title slug
     const foundVideo = allVideos.find((v) => {
-      if (String(v.id).toLowerCase() === potentialId) return true;
+      const vId = String(v.id).toLowerCase();
+      if (rawParam === vId) return true;
+      if (rawParam.endsWith(`-${vId}`)) return true;
       const vSlug = createSlug(v.title);
-      return normalized.includes(vSlug);
+      if (vSlug && (rawParam === vSlug || rawParam.includes(vSlug))) return true;
+      return false;
     });
 
     if (foundVideo) {
@@ -141,10 +150,10 @@ export function parseUrlPath(pathnameOrHash: string, allVideos: Video[]): { page
 
   // Exact or legacy path matches
   if (normalized === "/" || normalized === "/home") return { page: "home", video: null };
-  if (normalized === "/aquaponics" || normalized === "/aquaponics-farming" || normalized === "/aquaponic-farming") return { page: "aquaponics", video: null };
+  if (normalized === "/aquaponics-farming" || normalized === "/aquaponics" || normalized === "/aquaponic-farming") return { page: "aquaponics", video: null };
   if (normalized === "/aquaponic" || normalized === "/ras" || normalized === "/ras-farming" || normalized === "/recirculating") return { page: "ras", video: null };
-  if (normalized === "/biofloc" || normalized === "/bioflock" || normalized === "/biofloc-farming") return { page: "biofloc", video: null };
-  if (normalized === "/hydroponics" || normalized === "/hydroponic" || normalized === "/hydroponics-farming" || normalized === "/soilless") return { page: "hydroponics", video: null };
+  if (normalized === "/bioflock" || normalized === "/biofloc" || normalized === "/biofloc-farming") return { page: "biofloc", video: null };
+  if (normalized === "/hydroponic" || normalized === "/hydroponics" || normalized === "/hydroponics-farming" || normalized === "/soilless") return { page: "hydroponics", video: null };
   if (normalized === "/pond-farming" || normalized === "/pond") return { page: "pond", video: null };
   if (normalized === "/fish-diseases" || normalized === "/diseases") return { page: "diseases", video: null };
   if (normalized === "/feeding-management" || normalized === "/feed") return { page: "feed", video: null };

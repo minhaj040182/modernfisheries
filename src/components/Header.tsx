@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Fish, Video, Calculator, Droplet, Home, Info, Phone, Menu, X, ExternalLink, Sparkles, Sprout, Waves, HeartPulse, Layers, ShoppingBag, ZoomIn, ZoomOut, Type, HelpCircle, ChevronLeft, ChevronRight } from "lucide-react";
 import LanguageTranslator from "./LanguageTranslator";
-import logoUrl from "../logo1.png";
+import BrandLogo from "./BrandLogo";
 
 interface HeaderProps {
   currentPage: string;
@@ -46,16 +46,20 @@ export default function Header({ currentPage, onPageChange }: HeaderProps) {
   };
 
   // Font size scale state (in percent: 85%, 92.5%, 100%, 110%, 120%, 130%)
-  const [fontLevel, setFontLevel] = useState<number>(100);
-
-  useEffect(() => {
+  const [fontLevel, setFontLevel] = useState<number>(() => {
     try {
-      const parsed = parseFloat(localStorage.getItem("mf_font_size_percent") || "100");
-      if (!isNaN(parsed) && parsed >= 80 && parsed <= 140) setFontLevel(parsed);
+      const saved = localStorage.getItem("mf_font_size_percent");
+      if (saved) {
+        const parsed = parseFloat(saved);
+        if (!isNaN(parsed) && parsed >= 80 && parsed <= 140) {
+          return parsed;
+        }
+      }
     } catch (e) {
       // Ignore localStorage errors
     }
-  }, []);
+    return 100;
+  });
 
   useEffect(() => {
     try {
@@ -106,38 +110,14 @@ export default function Header({ currentPage, onPageChange }: HeaderProps) {
         <div className="flex justify-between items-center h-14 sm:h-16 gap-2">
           
           {/* Brand Logo */}
-          <a
+          <div 
             id="brand-logo"
-            href="/"
-            className="flex items-center space-x-2.5 cursor-pointer group shrink-0"
+            className="flex items-center cursor-pointer group shrink-0 transition-transform active:scale-95"
+            onClick={() => handleNavClick("home")}
+            title="Modern Fisheries - Home"
           >
-            <div className="relative w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center shrink-0">
-              <img 
-                src={logoUrl}
-                alt="Modern Fisheries logo - Certified fish feed supplier and turnkey RAS aquaculture consultancy in India" 
-                className="w-full h-full object-contain rounded-full border border-white/20 bg-white" 
-                onError={(e) => {
-                  e.currentTarget.style.display = "none";
-                  const fallback = document.getElementById("header-fallback-logo");
-                  if (fallback) fallback.classList.remove("hidden");
-                }}
-              />
-              <div 
-                id="header-fallback-logo" 
-                className="hidden p-1 bg-white text-[#1877F2] rounded-full shadow-inner flex items-center justify-center"
-              >
-                <Fish className="w-5 h-5" />
-              </div>
-            </div>
-            <div>
-              <span className="font-sans font-black text-base sm:text-lg tracking-tight text-white leading-none block">
-                Modern Fisheries
-              </span>
-              <span className="block text-[8px] sm:text-[9.5px] font-mono tracking-wider text-blue-100 uppercase font-bold mt-0.5">
-                Fish & Seeds Supplier
-              </span>
-            </div>
-          </a>
+            <BrandLogo variant="header" size={42} />
+          </div>
 
           {/* Right Action Buttons */}
           <div className="flex items-center space-x-1.5 sm:space-x-2 shrink-0">
@@ -224,25 +204,29 @@ export default function Header({ currentPage, onPageChange }: HeaderProps) {
               const Icon = item.icon;
               const pathMap: Record<string, string> = {
                 home: "/",
-                ras: "/ras/",
-                biofloc: "/biofloc/",
-                aquaponics: "/aquaponics/",
-                hydroponics: "/hydroponics/",
-                pond: "/pond-farming/",
-                diseases: "/fish-diseases/",
-                feed: "/feeding-management/",
-                calculators: "/calculators/",
-                faq: "/frequently-asked-questions/",
-                services: "/ourservices/",
-                about: "/about-us/",
-                privacy: "/privacy-policy/",
-                videos: "/farming-videos/",
+                ras: "/aquaponic",
+                biofloc: "/bioflock",
+                aquaponics: "/aquaponics-farming",
+                hydroponics: "/hydroponic",
+                pond: "/pond-farming",
+                diseases: "/fish-diseases",
+                feed: "/feeding-management",
+                calculators: "/calculators",
+                faq: "/frequently-asked-questions",
+                services: "/ourservices",
+                about: "/about-us",
+                privacy: "/privacy-policy",
+                videos: "/farming-videos",
               };
               const hrefPath = pathMap[item.id] || "/";
               return (
                 <a
                   key={item.id}
                   href={hrefPath}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavClick(item.id);
+                  }}
                   className={`px-3 py-1.5 rounded-lg sm:rounded-xl font-sans text-xs font-bold whitespace-nowrap transition-all flex items-center gap-1.5 cursor-pointer shrink-0 ${
                     currentPage === item.id 
                       ? "bg-white text-[#1877F2] shadow-xs" 
@@ -332,26 +316,29 @@ export default function Header({ currentPage, onPageChange }: HeaderProps) {
               const Icon = item.icon;
               const pathMap: Record<string, string> = {
                 home: "/",
-                ras: "/ras/",
-                biofloc: "/biofloc/",
-                aquaponics: "/aquaponics/",
-                hydroponics: "/hydroponics/",
-                pond: "/pond-farming/",
-                diseases: "/fish-diseases/",
-                feed: "/feeding-management/",
-                calculators: "/calculators/",
-                faq: "/frequently-asked-questions/",
-                services: "/ourservices/",
-                about: "/about-us/",
-                privacy: "/privacy-policy/",
-                videos: "/farming-videos/",
+                ras: "/aquaponic",
+                biofloc: "/bioflock",
+                aquaponics: "/aquaponics-farming",
+                hydroponics: "/hydroponic",
+                pond: "/pond-farming",
+                diseases: "/fish-diseases",
+                feed: "/feeding-management",
+                calculators: "/calculators",
+                faq: "/frequently-asked-questions",
+                services: "/ourservices",
+                about: "/about-us",
+                privacy: "/privacy-policy",
+                videos: "/farming-videos",
               };
               const hrefPath = pathMap[item.id] || "/";
               return (
                 <a
                   key={`drawer-${item.id}`}
                   href={hrefPath}
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavClick(item.id);
+                  }}
                   className={`text-left flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-bold transition-all ${
                     currentPage === item.id 
                       ? "bg-white text-[#1877F2]" 
@@ -369,3 +356,4 @@ export default function Header({ currentPage, onPageChange }: HeaderProps) {
     </header>
   );
 }
+

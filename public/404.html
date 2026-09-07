@@ -6,6 +6,9 @@
     <title>404 Not Found | Modern Fisheries</title>
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content="The requested page could not be found on Modern Fisheries." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <style>
       body {
         font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -73,6 +76,37 @@
         font-size: 14px;
       }
     </style>
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages
+      // https://github.com/rafgraph/spa-github-pages
+      var pathSegmentsToKeep = 0;
+      var l = window.location;
+      
+      // Known static or valid alias routes
+      var knownRoutes = [
+        "/home", "/ras", "/ras-farming", "/shopping", "/shop", "/aquaponics", 
+        "/aquaponics-farming", "/aquaponic", "/biofloc", "/bioflock", 
+        "/biofloc-farming", "/hydroponic", "/hydroponics", "/pond", 
+        "/pond-farming", "/diseases", "/fish-diseases", "/feed", 
+        "/feeding-management", "/calculator", "/calculators", "/services", 
+        "/ourservices", "/about", "/about-us", "/videos", "/farming-videos", 
+        "/faq", "/frequently-asked-questions", "/privacy", "/privacy-policy"
+      ];
+      
+      var isKnown = knownRoutes.some(function(r) {
+        return l.pathname.toLowerCase().indexOf(r) === 0;
+      });
+
+      if (isKnown || l.pathname.indexOf("/video/") === 0) {
+        var cleanPath = l.pathname.replace(/^\/+/, "");
+        l.replace(
+          l.protocol + '//' + l.host + '/?p=/' +
+          cleanPath.split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+          (l.search ? '&q=' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+          l.hash
+        );
+      }
+    </script>
   </head>
   <body>
     <div class="card">
@@ -83,8 +117,8 @@
       </p>
       <div class="links">
         <a href="/" class="btn">Homepage</a>
-        <a href="/ourservices/" class="btn-outline">Consultancy &amp; Feed</a>
-        <a href="/calculators/" class="btn-outline">Calculators</a>
+        <a href="/ourservices" class="btn-outline">Consultancy &amp; Feed</a>
+        <a href="/calculators" class="btn-outline">Calculators</a>
       </div>
     </div>
   </body>

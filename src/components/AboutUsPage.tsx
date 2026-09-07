@@ -29,6 +29,7 @@ import {
 import AdBanner from "./AdBanner";
 import RightSidebarAd from "./RightSidebarAd";
 import OwnCirclesAnnouncement from "./OwnCirclesAnnouncement";
+import BrandLogo from "./BrandLogo";
 
 interface AboutUsPageProps {
   onBackToDashboard?: () => void;
@@ -169,6 +170,9 @@ export default function AboutUsPage({ onBackToDashboard }: AboutUsPageProps = {}
 
             {/* SECTION 1: EXECUTIVE CORPORATE OVERVIEW */}
             <section className="bg-white border border-slate-200/80 rounded-2xl sm:rounded-3xl p-5 sm:p-8 space-y-6 shadow-xs">
+              {/* Official Brand Identity Banner */}
+              <BrandLogo variant="full" className="mb-2" />
+
               <div className="space-y-2 border-b border-slate-100 pb-4">
                 <span className="text-[10px] font-mono text-blue-700 font-extrabold uppercase tracking-widest block">Company Profile & Vision</span>
                 <h2 className="text-xl sm:text-3xl font-sans font-black text-slate-900 tracking-tight leading-snug">

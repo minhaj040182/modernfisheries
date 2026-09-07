@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 240" width="1000" height="240">
+  <defs>
+    <linearGradient id="mf-blue-head" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00D2FF" />
+      <stop offset="100%" stop-color="#0052CC" />
+    </linearGradient>
+    <linearGradient id="mf-orange-head" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFA62B" />
+      <stop offset="100%" stop-color="#FA541C" />
+    </linearGradient>
+    <linearGradient id="mf-green-head" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34D399" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+    <radialGradient id="mf-water-sphere" cx="45%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#0099FF" />
+      <stop offset="70%" stop-color="#0055D4" />
+      <stop offset="100%" stop-color="#00359E" />
+    </radialGradient>
+    <linearGradient id="mf-fish-dorsal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00E5FF" />
+      <stop offset="45%" stop-color="#0077EE" />
+      <stop offset="100%" stop-color="#0044AA" />
+    </linearGradient>
+    <linearGradient id="banner-bg" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0052CC" />
+      <stop offset="50%" stop-color="#0066FF" />
+      <stop offset="100%" stop-color="#0052CC" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1000" height="240" fill="url(#banner-bg)" />
+
+  <!-- Left Circular Emblem (offset x=16, y=20, scaled 1.0) -->
+  <g transform="translate(16, 20)">
+    <circle cx="100" cy="100" r="94" fill="#0052CC" stroke="#FFFFFF" stroke-width="2.5" />
+
+    <path d="M 46,72 A 88,88 0 0,1 154,72 L 140,84 A 66,66 0 0,0 60,84 Z" fill="url(#mf-blue-head)" stroke="#FFFFFF" stroke-width="2.5" />
+    <path d="M 160,82 A 88,88 0 0,1 108,188 L 104,168 A 66,66 0 0,0 144,92 Z" fill="url(#mf-orange-head)" stroke="#FFFFFF" stroke-width="2.5" />
+    <path d="M 92,188 A 88,88 0 0,1 40,82 L 56,92 A 66,66 0 0,0 96,168 Z" fill="url(#mf-green-head)" stroke="#FFFFFF" stroke-width="2.5" />
+
+    <circle cx="100" cy="38" r="19" fill="url(#mf-blue-head)" stroke="#FFFFFF" stroke-width="4" />
+    <circle cx="156" cy="138" r="19" fill="url(#mf-orange-head)" stroke="#FFFFFF" stroke-width="4" />
+    <circle cx="44" cy="138" r="19" fill="url(#mf-green-head)" stroke="#FFFFFF" stroke-width="4" />
+
+    <circle cx="100" cy="100" r="62" fill="url(#mf-water-sphere)" stroke="#FFFFFF" stroke-width="3.5" />
+
+    <path d="M 40,118 Q 60,104 80,116 T 120,116 T 160,118 L 160,162 L 40,162 Z" fill="#002E7A" opacity="0.8" />
+    <path d="M 40,126 C 60,112 78,138 106,122 C 126,110 144,130 160,122 L 160,162 L 40,162 Z" fill="#00B4D8" opacity="0.75" />
+    <path d="M 46,134 Q 72,118 100,132 T 154,128 L 154,162 L 46,162 Z" fill="#00E5FF" />
+
+    <path d="M 64,118 C 68,98 86,72 122,68 C 130,67 140,72 144,78 C 132,86 114,96 104,112 C 92,114 76,116 64,118 Z" fill="url(#mf-fish-dorsal)" />
+    <path d="M 66,118 C 78,116 96,114 106,110 C 124,100 136,88 144,78 C 138,88 128,98 116,106 C 100,116 82,122 68,121 Z" fill="#FFFFFF" />
+    <path d="M 90,77 Q 104,59 116,68 Q 108,75 100,80 Z" fill="#00E5FF" stroke="#FFFFFF" stroke-width="1.2" />
+    <path d="M 66,118 Q 52,115 48,104 Q 58,113 64,118 Q 54,124 48,134 Q 56,124 66,118 Z" fill="#00C0FF" stroke="#FFFFFF" stroke-width="1.2" />
+    <path d="M 100,105 Q 110,113 118,111 Q 110,103 100,105 Z" fill="#FFFFFF" />
+
+    <circle cx="134" cy="76" r="3.2" fill="#FFFFFF" />
+    <circle cx="135" cy="76" r="1.8" fill="#002D62" />
+    <circle cx="135.5" cy="75.5" r="0.6" fill="#FFFFFF" />
+
+    <circle cx="130" cy="59" r="3.2" fill="#00E5FF" />
+    <circle cx="140" cy="64" r="2.4" fill="#FFFFFF" />
+    <circle cx="146" cy="55" r="2" fill="#00E5FF" />
+    <circle cx="74" cy="98" r="2.2" fill="#FFFFFF" opacity="0.9" />
+  </g>
+
+  <!-- Typography Right Lockup -->
+  <!-- Modern (White) -->
+  <text x="236" y="142" font-family="'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif" font-weight="900" font-size="84" fill="#FFFFFF" letter-spacing="-0.5">Modern</text>
+
+  <!-- Fisheries (Cyan) -->
+  <text x="585" y="142" font-family="'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif" font-weight="900" font-size="84" fill="#00E5FF" letter-spacing="-0.5">Fisheries</text>
+
+  <!-- Circled TM Badge -->
+  <circle cx="968" cy="80" r="16" fill="none" stroke="#00E5FF" stroke-width="2.5" />
+  <text x="968" y="85" font-family="sans-serif" font-weight="bold" font-size="14" fill="#00E5FF" text-anchor="middle">TM</text>
+
+  <!-- Sub-Heading: Left Line -->
+  <line x1="240" y1="190" x2="340" y2="190" stroke="#00E5FF" stroke-width="4.5" stroke-linecap="round" />
+
+  <!-- Sub-Heading: FISH & SEEDS SUPPLIER -->
+  <text x="585" y="197" font-family="'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif" font-weight="800" font-size="24" fill="#FFFFFF" letter-spacing="5" text-anchor="middle">FISH &amp; SEEDS SUPPLIER</text>
+
+  <!-- Sub-Heading: Right Line -->
+  <line x1="830" y1="190" x2="960" y2="190" stroke="#00E5FF" stroke-width="4.5" stroke-linecap="round" />
+</svg>
